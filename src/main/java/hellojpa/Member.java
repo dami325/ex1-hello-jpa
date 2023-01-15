@@ -8,6 +8,7 @@ import java.util.Date;
 @Entity
 public class Member {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -17,12 +18,10 @@ public class Member {
      * columnDefinition = "varchar(100) default 'EMPTY'" 지정시 커럼 크기와 default값 지정가능
      * insertable,updateable = 등록,변경가능여부
      */
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String username;
 
     private Integer age;
-
-
 
     /** DB에는 E넘타입이 없기 떄문에 Enumerated 사용
      *  Enum 타입 사용시 주의사항!! 기본값인 ORDINAL 사용시 integer로 db에 생성되며 숫자로 enum을 관리함
